@@ -14,5 +14,7 @@ namespace UdemyCarBook.Domain.Entities
         public int PricingID { get; set; }
         public Pricing Pricing { get; set; }
         public decimal Amount { get; set; }
+
+
     }
 }
