@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace UdemyCarBook.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class mig2 : Migration
+    public partial class mig1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -213,39 +213,6 @@ namespace UdemyCarBook.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "cAR",
-                columns: table => new
-                {
-                    CarFeatureID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CarID = table.Column<int>(type: "int", nullable: false),
-                    CarID1 = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    FeatureID = table.Column<int>(type: "int", nullable: false),
-                    Available = table.Column<bool>(type: "bit", nullable: false),
-                    CarFeatureID1 = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_cAR", x => x.CarFeatureID);
-                    table.ForeignKey(
-                        name: "FK_cAR_Cars_CarID1",
-                        column: x => x.CarID1,
-                        principalTable: "Cars",
-                        principalColumn: "CarID");
-                    table.ForeignKey(
-                        name: "FK_cAR_Features_FeatureID",
-                        column: x => x.FeatureID,
-                        principalTable: "Features",
-                        principalColumn: "FeatureID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_cAR_cAR_CarFeatureID1",
-                        column: x => x.CarFeatureID1,
-                        principalTable: "cAR",
-                        principalColumn: "CarFeatureID");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "CarDescriptions",
                 columns: table => new
                 {
@@ -262,6 +229,33 @@ namespace UdemyCarBook.Persistence.Migrations
                         column: x => x.CarID,
                         principalTable: "Cars",
                         principalColumn: "CarID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CarFeatures",
+                columns: table => new
+                {
+                    CarFeatureID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CarID = table.Column<int>(type: "int", nullable: false),
+                    CarID1 = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    FeatureID = table.Column<int>(type: "int", nullable: false),
+                    Available = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CarFeatures", x => x.CarFeatureID);
+                    table.ForeignKey(
+                        name: "FK_CarFeatures_Cars_CarID1",
+                        column: x => x.CarID1,
+                        principalTable: "Cars",
+                        principalColumn: "CarID");
+                    table.ForeignKey(
+                        name: "FK_CarFeatures_Features_FeatureID",
+                        column: x => x.FeatureID,
+                        principalTable: "Features",
+                        principalColumn: "FeatureID",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -293,24 +287,19 @@ namespace UdemyCarBook.Persistence.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_cAR_CarFeatureID1",
-                table: "cAR",
-                column: "CarFeatureID1");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_cAR_CarID1",
-                table: "cAR",
-                column: "CarID1");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_cAR_FeatureID",
-                table: "cAR",
-                column: "FeatureID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_CarDescriptions_CarID",
                 table: "CarDescriptions",
                 column: "CarID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CarFeatures_CarID1",
+                table: "CarFeatures",
+                column: "CarID1");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CarFeatures_FeatureID",
+                table: "CarFeatures",
+                column: "FeatureID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CarPricings_CarID1",
@@ -338,10 +327,10 @@ namespace UdemyCarBook.Persistence.Migrations
                 name: "Banners");
 
             migrationBuilder.DropTable(
-                name: "cAR");
+                name: "CarDescriptions");
 
             migrationBuilder.DropTable(
-                name: "CarDescriptions");
+                name: "CarFeatures");
 
             migrationBuilder.DropTable(
                 name: "CarPricings");

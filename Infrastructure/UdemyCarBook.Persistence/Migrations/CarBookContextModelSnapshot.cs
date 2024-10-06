@@ -170,9 +170,6 @@ namespace UdemyCarBook.Persistence.Migrations
                     b.Property<bool>("Available")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("CarFeatureID1")
-                        .HasColumnType("int");
-
                     b.Property<int>("CarID")
                         .HasColumnType("int");
 
@@ -184,13 +181,11 @@ namespace UdemyCarBook.Persistence.Migrations
 
                     b.HasKey("CarFeatureID");
 
-                    b.HasIndex("CarFeatureID1");
-
                     b.HasIndex("CarID1");
 
                     b.HasIndex("FeatureID");
 
-                    b.ToTable("cAR");
+                    b.ToTable("CarFeatures");
                 });
 
             modelBuilder.Entity("UdemyCarBook.Domain.Entities.CarPricing", b =>
@@ -454,16 +449,12 @@ namespace UdemyCarBook.Persistence.Migrations
 
             modelBuilder.Entity("UdemyCarBook.Domain.Entities.CarFeature", b =>
                 {
-                    b.HasOne("UdemyCarBook.Domain.Entities.CarFeature", null)
-                        .WithMany("CarFeatures")
-                        .HasForeignKey("CarFeatureID1");
-
                     b.HasOne("UdemyCarBook.Domain.Entities.Car", "Car")
                         .WithMany("CarFeatures")
                         .HasForeignKey("CarID1");
 
                     b.HasOne("UdemyCarBook.Domain.Entities.Feature", "Feature")
-                        .WithMany()
+                        .WithMany("CarFeatures")
                         .HasForeignKey("FeatureID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -504,7 +495,7 @@ namespace UdemyCarBook.Persistence.Migrations
                     b.Navigation("CarPricings");
                 });
 
-            modelBuilder.Entity("UdemyCarBook.Domain.Entities.CarFeature", b =>
+            modelBuilder.Entity("UdemyCarBook.Domain.Entities.Feature", b =>
                 {
                     b.Navigation("CarFeatures");
                 });

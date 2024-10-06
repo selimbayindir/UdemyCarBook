@@ -1,1 +1,44 @@
 Persitence ýnterface Domain reference alýr DbSet olarak yazacaðýmýz için entityleri
+
+
+
+
+
+
+
+
+
+
+
+
+
+Makaleler 
+------------------
+CQRS Nedir
+https://sefikcankanber.medium.com/cqrs-command-query-responsibility-segregation-nedir-16b196376389
+CQRS Design Pattern
+
+Yazma ve Okuma iþlemlerini ayýrmak.
+Bir metot objenin durumunu deðiþtirmeli.
+Ya da metot geriye bir sonuç dönmelidir.
+Performans, güvenlik, ölçeklenebilirlik.
+Yazma: Create, Update, Delete iþlemleri.
+Okuma: List, GetByID iþlemleri.
+Commands:
+
+Select, Update, Delete iþlemleri için property'ler.
+Queries:
+
+Þartlý listeleme iþlemleri için property'ler.
+Handlers:
+
+CRUD iþlemlerini yöneten metodlar.
+Results:
+
+Listeleme iþlemleri için property'ler.
+
+Commands : Objenin durumunu deðiþtirir
+Queries  : Sonucu geriye döner (return)
+
+
+Querler genellikle Get Ön eki ile isimlendirilir.

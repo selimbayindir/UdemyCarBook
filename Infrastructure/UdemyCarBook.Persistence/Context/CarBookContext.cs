@@ -12,18 +12,15 @@ namespace UdemyCarBook.Persistence.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=SELIMBAYINDIR\\SUPERHERO;Database=CarBookStoreApp12;User Id=dw;Password=PerUpdate28;TrustServerCertificate=True");
-            /*
-             * ,
-             "MssqlMy": "Server=SELIM\\BYNDR;Database=NZWaLKS;User Id=sa;Password=Perkon123456;Trusted_Connection=True;TrustServerCertificate=True"
-             */
+            //optionsBuilder.UseSqlServer("Server=SELIMBAYINDIR\\SUPERHERO;Database=CarBookStore;User Id=dw;Password=PerUpdate28;TrustServerCertificate=True");
+            optionsBuilder.UseSqlServer("Server=SELIM\\BYNDR;Database=CarBookStore;User Id=sa;Password=Perkon123456;TrustServerCertificate=True");
         }
         DbSet<About> Abouts { get; set; }
         DbSet<Banner> Banners{ get; set; }
         DbSet<Brand>  Brands { get; set; }
         DbSet<Car> Cars { get; set; }
         DbSet<CarDescription> CarDescriptions { get; set; }
-        DbSet<CarFeature> cAR { get; set; }
+        DbSet<CarFeature> CarFeatures { get; set; }
         DbSet<CarPricing> CarPricings { get; set; }
         DbSet<Category> Categories { get; set; }
         DbSet<Contact> Contacts { get; set; }
